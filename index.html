@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brainX: An AI CMO That Runs Your Entire Marketing Team</title>
+  <meta name="description" content="brainX is an AI CMO that manages multiple channel specialists: SEO, GEO, X, LinkedIn, Reddit, writer, influencer outreach, and analytics. Brief one agent, it plans, delegates, and ships your marketing continuously from inside your Slack or Telegram.">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="brainx_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- CRT Overlay Effect Layer -->
+  <div id="crt-overlay" class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <a href="#top" class="nav-brand" aria-label="brainX home">
+      <img src="brainx_logo.png" alt="brainX Logo" width="30" height="30" class="brand-logo-img">
+      <span class="brand-text">brain<span class="accent-text">X</span><span class="blinking-cursor">_</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#agents">Agents</a>
+      <a href="#how">How-it-works</a>
+      <a href="#cost">Cost</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#faq">FAQs</a>
+    </div>
+
+    <div class="nav-actions">
+      <button type="button" class="crt-toggle-btn" id="crt-toggle-nav" aria-checked="false" aria-label="Toggle CRT mode">
+        CRT MODE
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-thumb"></span>
+        </span>
+      </button>
+
+      <button type="button" class="btn-primary open-modal-btn">
+        &gt; Hire the CMO
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <header id="top" class="hero-section">
+      <div class="hero-glow-bg" aria-hidden="true"></div>
+      
+      <div class="terminal-tag">
+        $ brainx --hire cmo <span class="comment-text">// department spawning...</span> <span class="accent-text">done ✓</span>
+      </div>
+
+      <h1 class="hero-title">
+        Your AI marketing team
+      </h1>
+
+      <p class="hero-subtitle">
+        Brief your AI CMO. The CMO manages specialists agents: SEO, X, LinkedIn, Reddit, influencers etc. They work while you ship.
+      </p>
+
+      <div class="hero-cta-wrap">
+        <button type="button" class="btn-primary btn-large open-modal-btn">
+          &gt; Hire the CMO
+        </button>
+      </div>
+    </header>
+
+    <!-- Interactive Prompt Demo Section -->
+    <section class="demo-section">
+      <div class="demo-container">
+        <!-- Tab Bar -->
+        <div class="demo-tablist" role="tablist" aria-label="Example prompts">
+          <span class="tablist-label">✦ PROMPTS</span>
+          <button type="button" class="demo-tab active" data-prompt="1" role="tab" aria-selected="true">01</button>
+          <button type="button" class="demo-tab" data-prompt="2" role="tab" aria-selected="false">02</button>
+          <button type="button" class="demo-tab" data-prompt="3" role="tab" aria-selected="false">03</button>
+        </div>
+
+        <!-- Demo Content Grid -->
+        <div class="demo-grid">
+          <!-- User Prompt Card -->
+          <div class="prompt-card">
+            <div class="prompt-text" id="prompt-display-text">
+              <span class="prompt-prefix">›</span> We just shipped dark mode. Make some noise about it this week.
+            </div>
+            <div class="prompt-arrow-btn">→</div>
+            <div class="demo-dash" aria-hidden="true"></div>
+          </div>
+
+          <!-- Live Agent Action Panel -->
+          <div class="agent-panel" id="agent-panel-display" role="tabpanel">
+            <div class="agent-header">
+              <span class="agent-tag">✦ AGENT</span>
+              <span class="agent-action-title" id="agent-action-title">LAUNCH PUSH</span>
+              <span class="agent-status-badge">
+                Active <span class="pulse-dot">●</span>
+              </span>
+            </div>
+
+            <div class="steps-list" id="agent-steps-list">
+              <!-- Rendered via JS based on active tab -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Constellation / Agent Network Section -->
+    <section id="agents" class="section constellation-section">
+      <div class="section-tag">// THE MULTI-AGENT ARCHITECTURE</div>
+      <h2 class="section-title">Your AI CMO.</h2>
+      <p class="section-subtitle">One multi-agent team owning your entire distribution layer.</p>
+
+      <div class="constellation-wrap">
+        <div class="constellation-stage" id="constellation-stage">
+          <!-- Laser beam connection lines -->
+          <div class="laser-ray ray-1" aria-hidden="true"></div>
+          <div class="laser-ray ray-2" aria-hidden="true"></div>
+          <div class="laser-ray ray-3" aria-hidden="true"></div>
+          <div class="laser-ray ray-4" aria-hidden="true"></div>
+          <div class="laser-ray ray-5" aria-hidden="true"></div>
+          <div class="laser-ray ray-6" aria-hidden="true"></div>
+          <div class="laser-ray ray-7" aria-hidden="true"></div>
+          <div class="laser-ray ray-8" aria-hidden="true"></div>
+
+          <!-- Central CMO Node -->
+          <div class="center-node" id="cmo-center-node" title="brainX AI CMO">
+            <img src="brainx_logo.png" alt="brainX CMO Node" width="104" height="104">
+          </div>
+
+          <!-- Satellite Agent Nodes -->
+          <div class="satellite-node node-x" data-agent="X (Twitter)" data-role="Viral threads, daily posts & engagement replies">
+            <div class="node-icon">X</div>
+            <span class="node-label">X (Twitter)</span>
+          </div>
+
+          <div class="satellite-node node-linkedin" data-agent="LinkedIn" data-role="B2B thought leadership, carousels & executive posts">
+            <div class="node-icon">in</div>
+            <span class="node-label">LinkedIn</span>
+          </div>
+
+          <div class="satellite-node node-reddit" data-agent="Reddit" data-role="Subreddit thread monitoring & helpful organic replies">
+            <div class="node-icon">r/</div>
+            <span class="node-label">Reddit</span>
+          </div>
+
+          <div class="satellite-node node-seo" data-agent="SEO" data-role="Keyword research, programmatic content & page briefs">
+            <div class="node-icon">⌕</div>
+            <span class="node-label">SEO</span>
+          </div>
+
+          <div class="satellite-node node-geo" data-agent="GEO" data-role="Generative Engine Optimization (ChatGPT, Perplexity citations)">
+            <div class="node-icon">◎</div>
+            <span class="node-label">GEO</span>
+          </div>
+
+          <div class="satellite-node node-influencer" data-agent="Influencer Outreach" data-role="Niche creator discovery, DM outreach & collab deals">
+            <div class="node-icon">@</div>
+            <span class="node-label">Influencer</span>
+          </div>
+
+          <div class="satellite-node node-writer" data-agent="Long-Form Writer" data-role="Deep-dive blog posts, newsletter editions & docs">
+            <div class="node-icon">✎</div>
+            <span class="node-label">Writer</span>
+          </div>
+
+          <div class="satellite-node node-analytics" data-agent="Analytics & Insights" data-role="Conversion tracking, channel ROI & weekly digests">
+            <div class="node-icon">▁▄▆</div>
+            <span class="node-label">Analytics</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Agent Detail Tooltip / Info Banner -->
+        <div class="agent-info-banner" id="agent-info-banner">
+          <span class="info-tag">HOVER AN AGENT</span>
+          <div class="info-content" id="agent-info-content">
+            Hover over any specialist agent to inspect its marketing scope and automation capability.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="how" class="section workflow-section">
+      <div class="section-tag">// THE BRAINX WORKFLOW</div>
+      <h2 class="section-title">
+        Ship your product. <br>
+        <span class="accent-text">brainX handles the distribution.</span>
+      </h2>
+
+      <div class="workflow-grid">
+        <!-- Step 1 -->
+        <div class="workflow-card">
+          <div class="step-num">[01]</div>
+          <h3 class="step-title">Brief the CMO</h3>
+          <div class="terminal-box">
+$ you: "we ship v2 friday.
+  own the launch."
+> parsing intent... done
+> plan drafted: 6 tasks
+          </div>
+          <p class="step-desc">
+            Talk to CMO to plan about your next launch or let it fetch it from your team's group chats.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="workflow-card">
+          <div class="step-num">[02]</div>
+          <h3 class="step-title">It delegates</h3>
+          <div class="terminal-box">
+> x: launch thread
+> seo: landing page brief
+> reddit: 3 threads matched
+> writer: blog outline
+          </div>
+          <p class="step-desc">
+            The CMO splits the work across its multiple specialist agents and sets the schedule.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="workflow-card">
+          <div class="step-num">[03]</div>
+          <h3 class="step-title">You approve</h3>
+          <div class="terminal-box">
+> 6 drafts ready for review
+> approve all? [y/n] y
+> publishing... ✓
+> weekly digest → #marketing
+          </div>
+          <p class="step-desc">
+            Everything waits for your sign-off. Then it publishes, monitors, and reports back.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cost Section -->
+    <section id="cost" class="section cost-section">
+      <div class="section-tag">// THE MATH</div>
+      <h2 class="section-title">
+        A marketing team costs <span class="danger-text">$12,500/mo.</span><br>
+        brainX doesn't.
+      </h2>
+
+      <div class="cost-grid">
+        <!-- Old Way Card -->
+        <div class="cost-card cost-card-old">
+          <div class="cost-card-header danger-text">THE OLD WAY · 5 HIRES</div>
+          <div class="cost-row">
+            <span>CMO</span>
+            <span class="cost-price-old">$5,500/mo</span>
+          </div>
+          <div class="cost-row">
+            <span>social media manager</span>
+            <span class="cost-price-old">$4,000/mo</span>
+          </div>
+          <div class="cost-row">
+            <span>SEO consultant</span>
+            <span class="cost-price-old">$2,000/mo</span>
+          </div>
+          <div class="cost-row">
+            <span>community manager</span>
+            <span class="cost-price-old">$1,000/mo</span>
+          </div>
+          <div class="cost-row">
+            <span>+ tools & scheduling stack</span>
+            <span class="cost-price-old">$500/mo</span>
+          </div>
+          <div class="cost-row cost-total-row">
+            <span>total</span>
+            <span class="danger-text cost-total-price">$12,500+/mo</span>
+          </div>
+        </div>
+
+        <!-- BrainX Way Card -->
+        <div class="cost-card cost-card-new">
+          <div class="cost-card-header accent-text">THE BRAINX WAY · 1 AGENT</div>
+          <div class="cost-row">
+            <span>CMO agent: plans & orchestrates</span>
+            <span class="accent-text">included</span>
+          </div>
+          <div class="cost-row">
+            <span>8 channel specialists, 24/7</span>
+            <span class="accent-text">included</span>
+          </div>
+          <div class="cost-row">
+            <span>lives in your Slack / Telegram</span>
+            <span class="accent-text">included</span>
+          </div>
+          <div class="cost-row">
+            <span>you approve, it publishes</span>
+            <span class="accent-text">included</span>
+          </div>
+          <div class="cost-row">
+            <span>weekly digest & analytics</span>
+            <span class="accent-text">included</span>
+          </div>
+          <div class="cost-row cost-total-row">
+            <span>total</span>
+            <span class="accent-text cost-total-price">a fraction of one hire</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="section roadmap-section">
+      <div class="section-tag">// WHERE THIS GOES</div>
+      <h2 class="section-title">Three acts.</h2>
+
+      <div class="roadmap-grid">
+        <!-- Act 1 -->
+        <div class="roadmap-card act-active">
+          <div class="act-roman act-roman-green">I</div>
+          <div class="act-badge accent-text">NOW</div>
+          <h3 class="act-title">Hire the CMO</h3>
+          <p class="act-desc">
+            One CMO, multiple specialist agents, your channels covered from day one.
+          </p>
+        </div>
+
+        <!-- Act 2 -->
+        <div class="roadmap-card">
+          <div class="act-roman">II</div>
+          <div class="act-badge accent-text">NEXT</div>
+          <h3 class="act-title">It learns your voice</h3>
+          <p class="act-desc">
+            Every approval and edit trains it. It learns what converts for your audience and doubles down.
+          </p>
+        </div>
+
+        <!-- Act 3 -->
+        <div class="roadmap-card">
+          <div class="act-roman">III</div>
+          <div class="act-badge accent-text">THEN</div>
+          <h3 class="act-title">The network effect</h3>
+          <p class="act-desc">
+            brainX CMOs cross-promote, trade audience insights, and negotiate collabs, agent to agent.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace Integration Showcase Section -->
+    <section class="section workspace-section">
+      <div class="workspace-grid">
+        <div class="workspace-text-col">
+          <div class="section-tag">// NO NEW DASHBOARD</div>
+          <h2 class="section-title">It lives where you already work.</h2>
+          <p class="workspace-desc">
+            Add brainX to your Slack or Telegram. It reads what you ship, turns it into distribution, and asks for approval before anything goes live.<br>
+            <span class="highlight-text">brainX watches you build the product.</span>
+          </p>
+
+          <div class="platform-tags">
+            <span class="platform-tag">slack</span>
+            <span class="platform-tag">telegram</span>
+            <span class="platform-tag">discord soon</span>
+          </div>
+        </div>
+
+        <!-- Interactive Slack Simulation Box -->
+        <div class="slack-box">
+          <div class="slack-header">
+            <span class="slack-channel-name"># product</span>
+            <span class="slack-meta">slack · 4 members + 1 agent</span>
+          </div>
+
+          <div class="slack-messages">
+            <!-- User message -->
+            <div class="slack-msg">
+              <div class="slack-avatar avatar-user">R</div>
+              <div class="slack-msg-body">
+                <div class="slack-user-name">Robin <span class="slack-time">2:14 pm</span></div>
+                <div class="slack-text">deployed the new onboarding flow 🚀</div>
+              </div>
+            </div>
+
+            <!-- Agent message -->
+            <div class="slack-msg">
+              <div class="slack-avatar avatar-agent">bX</div>
+              <div class="slack-msg-body">
+                <div class="slack-user-name">
+                  brainX CMO <span class="badge-agent">AGENT</span> <span class="slack-time">2:16 pm</span>
+                </div>
+                <div class="slack-text">
+                  On it. New onboarding = a story worth telling. I've kicked off:
+                </div>
+
+                <div class="slack-tasks-card">
+                  <div><span class="accent-text">[x]</span> <span class="task-title">launch thread</span> <span class="task-status">· drafted, review?</span></div>
+                  <div><span class="accent-text">[seo]</span> <span class="task-title">"onboarding examples"</span> <span class="task-status">· page brief, vol 8.1k</span></div>
+                  <div><span class="accent-text">[reddit]</span> <span class="task-title">2 live threads</span> <span class="task-status">· replies drafted</span></div>
+                </div>
+
+                <!-- Interactive Slack Action Buttons -->
+                <div class="slack-actions" id="slack-action-buttons">
+                  <button type="button" class="btn-slack-approve" id="slack-btn-approve">approve all</button>
+                  <button type="button" class="btn-slack-review" id="slack-btn-review">review each</button>
+                </div>
+                <div class="slack-feedback-msg" id="slack-feedback-msg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq-section">
+      <div class="section-tag">// FAQ</div>
+      <h2 class="section-title">Questions? <span class="accent-text">Answers.</span></h2>
+
+      <div class="faq-accordion">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <button type="button" class="faq-trigger" aria-expanded="true">
+            <span>What is brainX?</span>
+            <span class="faq-icon">−</span>
+          </button>
+          <div class="faq-content">
+            <p>An AI CMO that runs a team of specialized channel agents: SEO, GEO, X, LinkedIn, Reddit, writer, influencer outreach, and analytics. You brief the CMO once; it plans, delegates, and ships marketing continuously.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>How is it different from AI writing tools?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Writing tools wait for a prompt and give you text to paste somewhere. brainX watches what you actually ship, decides what's worth saying, drafts it in your voice, and publishes on your approval, across every channel at once.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>Where does it live?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>In your Slack or Telegram. It posts drafts, asks for approvals, and sends a weekly digest right where your team already talks.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>Do I approve everything before it goes out?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Yes. Nothing publishes without your sign-off. You can loosen the leash per channel as trust builds: auto-publish replies, review threads, whatever mix you want.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>How much does it cost?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>A fraction of a single marketing hire. A lean human team runs $12,500+/mo; brainX gives you the same coverage for a monthly subscription. Early access pricing is live now.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Banner Section -->
+    <section class="section bottom-cta-section">
+      <div class="cta-glow-bg" aria-hidden="true"></div>
+      <div class="terminal-tag">$ brainx --hire cmo<span class="blinking-cursor">_</span></div>
+      <h2 class="bottom-cta-title">
+        Your product deserves<br>
+        <span class="accent-text">a louder launch.</span>
+      </h2>
+      <button type="button" class="btn-primary btn-large open-modal-btn">
+        &gt; Hire the CMO
+      </button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <img src="brainx_logo.png" alt="brainX Logo" width="28" height="28">
+          <span class="brand-text">brain<span class="accent-text">X</span></span>
+        </div>
+        <p class="footer-desc">
+          Your always-on AI CMO.<br>
+          One manager agent · multiple specialists agents.
+        </p>
+      </div>
+
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <span class="footer-col-title">Product</span>
+          <a href="#" class="open-modal-btn">Hire the CMO</a>
+          <a href="#how">How it works</a>
+          <a href="#agents">Agents</a>
+          <a href="#cost">Cost</a>
+          <a href="#roadmap">Roadmap</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">Connect</span>
+          <a href="https://x.com/brainxapp" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+          <a href="https://www.linkedin.com/company/brainxapp" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright-text">© 2026 brainX</div>
+      
+      <button type="button" class="crt-toggle-btn" id="crt-toggle-footer" aria-checked="false" aria-label="Toggle CRT mode">
+        CRT MODE
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-thumb"></span>
+        </span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Modal Early Access Window -->
+  <div class="modal-backdrop" id="modal-early-access" aria-hidden="true">
+    <div class="modal-window" role="dialog" aria-labelledby="modal-title">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header">
+        <div class="terminal-tag">$ brainx --request early-access</div>
+        <h3 class="modal-title" id="modal-title">Hire your AI CMO</h3>
+        <p class="modal-subtitle">Join the early access queue. Deploy a dedicated AI marketing team inside your Slack or Telegram.</p>
+      </div>
+
+      <form id="early-access-form" class="modal-form">
+        <div class="form-group">
+          <label for="form-name">Full Name</label>
+          <input type="text" id="form-name" placeholder="e.g. Alex Rivera" required>
+        </div>
+
+        <div class="form-group">
+          <label for="form-email">Work Email</label>
+          <input type="email" id="form-email" placeholder="alex@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="form-url">Product / Company URL</label>
+          <input type="url" id="form-url" placeholder="https://yourproduct.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Target Channels Needed</label>
+          <div class="channels-checkbox-grid">
+            <label class="checkbox-label"><input type="checkbox" name="channels" value="X" checked> X (Twitter)</label>
+            <label class="checkbox-label"><input type="checkbox" name="channels" value="LinkedIn" checked> LinkedIn</label>
+            <label class="checkbox-label"><input type="checkbox" name="channels" value="Reddit" checked> Reddit</label>
+            <label class="checkbox-label"><input type="checkbox" name="channels" value="SEO" checked> SEO</label>
+            <label class="checkbox-label"><input type="checkbox" name="channels" value="GEO" checked> GEO</label>
+            <label class="checkbox-label"><input type="checkbox" name="channels" value="Influencers"> Influencers</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary btn-large btn-full">
+          &gt; Submit Application
+        </button>
+      </form>
+
+      <div class="form-success-msg" id="form-success-msg" hidden>
+        <div class="success-icon">✓</div>
+        <h4>Application Received!</h4>
+        <p>Your AI CMO environment is being provisioned. We will reach out to your email shortly with Slack/Telegram setup instructions.</p>
+        <button type="button" class="btn-primary" id="btn-close-success">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
